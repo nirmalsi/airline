@@ -38,5 +38,19 @@ select * from flights;
 
 (g) select aircraft.a_name, employee.salary  from aircraft join certified on (certified.aid=aircraft.aid) join employee on (employee.eid=certified.eid) where aircraft.cruisingrange>1000;
 
+(b) select certified.eid,max(cruisingrange) from aircraft inner join certified on certified.aid=aircraft.aid inner join employee on employee.eid=certified.eid  group by certified.eid having count(certified.eid)>3;
+
+(l)  select distinct employee.ename from employee join certified on employee.eid=certified.eid join aircraft on aircraft.aid=certified.aid where aircraft.cruisingrange>1000;
+
+(n) select distinct employee.ename from employee inner join certified on certified.eid=employee.eid inner join aircraft on certified.aid=aircraft.aid where aircraft.a_name regexp '^Boeing' and aircraft.cruisingrange>1000 ;
+
+(d) select distinct aircraft.a_name,avg(employee.salary)  from aircraft  join certified on certified.aid=aircraft.aid join employee on employee.eid=certified.eid where aircraft.cruisingrange>3000 group by aircraft.a_name;
+
+(i) select from_airport,departure_time from flights where (from_airport regexp '^madison' and to_airport regexp '^new york') and routes<=2 and arrival_time <=06-00-00;
+
+(m) select ename from employee join certified on certified.eid=employee.eid join aircraft on aircraft.aid=certified.aid where cruisingrange>1000 group by employee.eid having count(employee.eid)>1;
+
+
+
 
 
